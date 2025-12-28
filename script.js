@@ -1,26 +1,40 @@
-function toggleDarkMode() {
-  document.documentElement.classList.toggle("dark");
-}
+// Apply saved theme on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const theme = localStorage.getItem("theme");
 
-function subscribe() {
-  document.getElementById("message").innerText = "Thanks for subscribing! 🎸";
-}
-
-const cards = document.querySelectorAll(".card");
-
-window.addEventListener("scroll", () => {
-  cards.forEach((card) => {
-    const cardTop = card.getBoundingClientRect().top;
-    if (cardTop < window.innerHeight - 100) {
-      card.classList.remove("opacity-0", "translate-y-10");
-      card.classList.add("opacity-100", "translate-y-0");
-    }
-  });
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+  }
 });
 
+// Toggle dark mode
+function toggleDarkMode() {
+  const html = document.documentElement;
+
+  if (html.classList.contains("dark")) {
+    html.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  } else {
+    html.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+// Loader (already used)
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
-  if (loader) {
-    loader.style.display = "none";
-  }
+  if (loader) loader.style.display = "none";
+});
+
+// Scroll progress (already used)
+window.addEventListener("scroll", () => {
+  const progress = document.getElementById("progress");
+  if (!progress) return;
+
+  const scrollTop = document.documentElement.scrollTop;
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  progress.style.width = (scrollTop / height) * 100 + "%";
 });
