@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkin Park | Members</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+
+    <style>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.8s ease forwards;
+      }
+    </style>
+    <script>
+      document.body.classList.add("opacity-0");
+      window.addEventListener("load", () => {
+        document.body.classList.remove("opacity-0");
+      });
+
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = link.getAttribute("href");
+          document.body.classList.add("opacity-0");
+          setTimeout(() => {
+            window.location.href = href;
+          }, 300);
+        });
+      });
+    </script>
+
+    <style>
+      body {
+        transition: opacity 0.3s ease;
+      }
+    </style>
+    <style>
+      .nav-link {
+        position: relative;
+        padding-bottom: 4px;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        left: 0;
+        bottom: 0;
+        background: #ef4444;
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-900 dark:to-black text-gray-900 dark:text-gray-100 transition-all"
+  >
+    <div
+      id="loader"
+      class="fixed inset-0 flex items-center justify-center bg-black z-[9999]"
+    >
+      <div
+        class="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"
+      ></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav
+      class="flex justify-between items-center px-8 py-5 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-lg sticky top-0 z-50"
+    >
+      <h1 class="text-2xl font-extrabold tracking-wide">Linkin Park</h1>
+
+      <div class="space-x-6">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="albums.html" class="nav-link">Albums</a>
+        <a href="members.html" class="nav-link">Members</a>
+
+        <button
+          onclick="toggleDarkMode()"
+          class="px-4 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black transition hover:scale-105"
+        >
+          Dark
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="text-center py-24 fade-up">
+      <h2 class="text-5xl font-extrabold mb-4 tracking-widest">THE BAND</h2>
+      <p class="max-w-xl mx-auto text-gray-600 dark:text-gray-400">
+        The voices, minds, and energy behind Linkin Park.
+      </p>
+    </header>
+
+    <!-- MEMBERS GRID -->
+    <section class="px-10 pb-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <!-- MEMBER CARD -->
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <h3 class="text-2xl font-bold">Chester Bennington</h3>
+          <p class="text-red-500 font-semibold mt-1">Lead Vocalist</p>
+          <p class="text-sm mt-4 text-gray-600 dark:text-gray-400">
+            Known for his powerful screams and emotional depth, Chester defined
+            the soul of the band.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <h3 class="text-2xl font-bold">Mike Shinoda</h3>
+          <p class="text-red-500 font-semibold mt-1">Rapper / Producer</p>
+          <p class="text-sm mt-4 text-gray-600 dark:text-gray-400">
+            The creative backbone of Linkin Park — blending rap, melody, and
+            production.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <h3 class="text-2xl font-bold">Brad Delson</h3>
+          <p class="text-red-500 font-semibold mt-1">Lead Guitarist</p>
+          <p class="text-sm mt-4 text-gray-600 dark:text-gray-400">
+            Known for heavy riffs and textured guitar layers.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <h3 class="text-2xl font-bold">Dave “Phoenix” Farrell</h3>
+          <p class="text-red-500 font-semibold mt-1">Bassist</p>
+          <p class="text-sm mt-4 text-gray-600 dark:text-gray-400">
+            Providing groove and rhythm that grounds the band’s sound.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <h3 class="text-2xl font-bold">Joe Hahn</h3>
+          <p class="text-red-500 font-semibold mt-1">DJ / Visual Artist</p>
+          <p class="text-sm mt-4 text-gray-600 dark:text-gray-400">
+            Adding electronic textures and iconic visuals to the band’s
+            identity.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <h3 class="text-2xl font-bold">Rob Bourdon</h3>
+          <p class="text-red-500 font-semibold mt-1">Drummer</p>
+          <p class="text-sm mt-4 text-gray-600 dark:text-gray-400">
+            Driving the band with powerful and precise drum patterns.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="text-center py-20 bg-black text-white">
+      <p class="text-xl italic max-w-2xl mx-auto">
+        “We’re not a band that fits into one category.”
+      </p>
+      <span class="block mt-4 text-red-500 font-semibold"> — Linkin Park </span>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 bg-black text-white text-sm">
+      © 2025 Linkin Park Fan Showcase
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const links = document.querySelectorAll(".nav-link");
+      links.forEach((link) => {
+        if (window.location.href.includes(link.getAttribute("href"))) {
+          link.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

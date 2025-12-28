@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkin Park | Albums</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+
+    <!-- Custom Animations -->
+    <style>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-up {
+        animation: fadeUp 0.8s ease forwards;
+      }
+    </style>
+    <script>
+      document.body.classList.add("opacity-0");
+      window.addEventListener("load", () => {
+        document.body.classList.remove("opacity-0");
+      });
+
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = link.getAttribute("href");
+          document.body.classList.add("opacity-0");
+          setTimeout(() => {
+            window.location.href = href;
+          }, 300);
+        });
+      });
+    </script>
+    <style>
+      .nav-link {
+        position: relative;
+        padding-bottom: 4px;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        left: 0;
+        bottom: 0;
+        background: #ef4444;
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+    </style>
+
+    <style>
+      body {
+        transition: opacity 0.3s ease;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-900 dark:to-black text-gray-900 dark:text-gray-100 transition-all"
+  >
+    <div
+      id="loader"
+      class="fixed inset-0 flex items-center justify-center bg-black z-[9999]"
+    >
+      <div
+        class="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"
+      ></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav
+      class="flex justify-between items-center px-8 py-5 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-lg sticky top-0 z-50"
+    >
+      <h1 class="text-2xl font-extrabold tracking-wide">Linkin Park</h1>
+
+      <div class="space-x-6">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="albums.html" class="nav-link">Albums</a>
+        <a href="members.html" class="nav-link">Members</a>
+
+        <button
+          onclick="toggleDarkMode()"
+          class="px-4 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black transition hover:scale-105"
+        >
+          Dark
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="text-center py-24 fade-up">
+      <h2 class="text-5xl font-extrabold mb-4 tracking-widest">DISCOGRAPHY</h2>
+      <p class="max-w-xl mx-auto text-gray-600 dark:text-gray-400">
+        A sonic evolution of Linkin Park through the years.
+      </p>
+    </header>
+
+    <!-- ALBUM TIMELINE GRID -->
+    <section class="px-10 pb-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- CARD -->
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <span class="text-red-500 font-bold">2000</span>
+          <h3 class="text-2xl font-bold mt-2 mb-3">Hybrid Theory</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            A revolutionary debut that defined a generation with raw emotion and
+            rap-metal fusion.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <span class="text-red-500 font-bold">2003</span>
+          <h3 class="text-2xl font-bold mt-2 mb-3">Meteora</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Darker, heavier, and emotionally intense — a fan-favorite
+            masterpiece.
+          </p>
+        </div>
+
+        <div
+          class="fade-up bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl p-8 shadow-xl hover:-translate-y-3 transition duration-300"
+        >
+          <span class="text-red-500 font-bold">2007</span>
+          <h3 class="text-2xl font-bold mt-2 mb-3">Minutes to Midnight</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            A mature shift toward alternative rock with political and
+            introspective themes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section class="text-center py-20 bg-black text-white">
+      <p class="text-xl italic max-w-2xl mx-auto">
+        “Music is a universal language — it speaks what words can’t.”
+      </p>
+      <span class="block mt-4 text-red-500 font-semibold"> — Linkin Park </span>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 bg-black text-white text-sm">
+      © 2025 Linkin Park Fan Showcase
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const links = document.querySelectorAll(".nav-link");
+      links.forEach((link) => {
+        if (window.location.href.includes(link.getAttribute("href"))) {
+          link.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkin Park | Showcase</title>
+
+    <style>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeUp {
+        animation: fadeUp 0.8s ease-out forwards;
+      }
+
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+    </style>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Dark Mode -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <script>
+    document.body.classList.add("opacity-0");
+    window.addEventListener("load", () => {
+      document.body.classList.remove("opacity-0");
+    });
+
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        document.body.classList.add("opacity-0");
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      });
+    });
+  </script>
+
+  <style>
+    body {
+      transition: opacity 0.3s ease;
+    }
+  </style>
+  <style>
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: 0;
+      background: #ef4444;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+  </style>
+
+  <body
+    class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-all"
+  >
+    <div
+      id="loader"
+      class="fixed inset-0 flex items-center justify-center bg-black z-[9999]"
+    >
+      <div
+        class="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"
+      ></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav
+      class="flex justify-between items-center p-5 shadow-md bg-white dark:bg-gray-800"
+    >
+      <h1 class="text-2xl font-extrabold tracking-wide">Linkin Park</h1>
+
+      <div class="space-x-6">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="albums.html" class="nav-link">Albums</a>
+        <a href="members.html" class="nav-link">Members</a>
+
+        <button
+          onclick="toggleDarkMode()"
+          class="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
+        >
+          Dark Mode
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header
+      class="text-center py-20 bg-gradient-to-r from-black to-gray-800 text-white"
+    >
+      <h2 class="text-5xl font-extrabold mb-4 animate-fadeUp">LINKIN PARK</h2>
+
+      <p class="text-lg mb-6 animate-fadeUp delay-200">
+        Blending Rock, Rap & Emotion
+      </p>
+
+      <button
+        class="px-6 py-3 bg-red-600 rounded-xl hover:scale-105 transition px-6 py-3 bg-red-600 rounded-xl hover:scale-105 transition animate-pulse"
+      >
+        Listen Now
+      </button>
+    </header>
+
+    <!-- SHOWCASE SECTION -->
+    <section class="p-10">
+      <h3 class="text-3xl font-bold text-center mb-10">Iconic Albums</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- CARD 1 -->
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-red-500/40 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 card"
+        >
+          <h4 class="text-xl font-bold mb-2">Hybrid Theory</h4>
+          <p>One of the best-selling debut albums in rock history.</p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-red-500/40 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 card"
+        >
+          <h4 class="text-xl font-bold mb-2">Meteora</h4>
+          <p>A perfect blend of nu-metal, rap, and emotional lyrics.</p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-red-500/40 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 card"
+        >
+          <h4 class="text-xl font-bold mb-2">Minutes to Midnight</h4>
+          <p>Exploring political themes and mature sound.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBSCRIBE SECTION -->
+    <section class="text-center p-10 bg-gray-200 dark:bg-gray-700">
+      <h3 class="text-2xl font-bold mb-4">Stay Updated</h3>
+      <button
+        onclick="subscribe()"
+        class="px-6 py-3 bg-red-600 text-white rounded-xl hover:scale-105 transition"
+      >
+        Subscribe
+      </button>
+      <p id="message" class="mt-4"></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center p-5 bg-black text-white">
+      © 2025 Linkin Park Fan Showcase
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const links = document.querySelectorAll(".nav-link");
+      links.forEach((link) => {
+        if (window.location.href.includes(link.getAttribute("href"))) {
+          link.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
